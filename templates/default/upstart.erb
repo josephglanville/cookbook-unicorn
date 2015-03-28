@@ -1,0 +1,17 @@
+# <%= @app_name %> - <%= @app_name %> unicorn
+
+description "<%= @app_name %> unicorn"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+setuid <%= @app_config['user'] %>
+setgid <%= @app_config['group'] %>
+
+respawn
+
+script
+  APP_DIR=<%= @app_config['dir'] %>
+  cd $APP_DIR
+  exec bundle exec unicorn -c config/unicorn.rb
+end script

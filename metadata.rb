@@ -1,0 +1,3 @@
+name 'unicorn'
+version '0.0.1'
+depends 'nginx'
